@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: goldenrod;
+            margin: 0;
+            padding: 20px;
+        }
+        .main {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        .card {
+            background-color: lightgrey;
+            border-radius: 10px;
+            border-color: 2px solid red;
+           
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            
+            
+        }
+        .card-content {
+            padding: 15px;
+        
+        }
+        .card p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        .card span {
+            font-size: 16px;
+            color: #777;
+        }
+       .back-button {
+            position: fixed; /* Position fixed to keep it visible */
+            top: 20px;
+            left: 20px;
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            margin-top: 0px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            z-index: 1000; /* Ensure it appears above other content */
+        }
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <a class="back-button" href="#" onclick="history.back(); return false;">Home</a>
+    <div class="main">
+        <!-- Cards will be dynamically populated by JavaScript -->
+    </div>
+
+    <script>
+        let cardsContainer = document.querySelector(".main");
+
+        async function getData() {
+            try {
+                let response = await fetch("https://dummyjson.com/products");
+                let data = await response.json();
+
+                data.products.forEach(product => {
+                    let card = document.createElement("div");
+                    card.classList.add("card");
+
+                    let img = document.createElement("img");
+                    img.src = product.images[0];
+                    img.alt = product.name;
+
+                    let cardContent = document.createElement("div");
+                    cardContent.classList.add("card-content");
+
+                    let brand = document.createElement("span");
+                    brand.textContent = product.brand;
+
+                    let price = document.createElement("p");
+                    price.textContent = "$" + product.price.toFixed(2);
+
+                    cardContent.appendChild(brand);
+                    cardContent.appendChild(price);
+
+                    card.appendChild(img);
+                    card.appendChild(cardContent);
+
+                    cardsContainer.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        getData();
+    </script>
+</body>
+</html>

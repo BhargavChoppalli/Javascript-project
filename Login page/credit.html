@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit</title>
+    <!-- Add Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .credit {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+
+        /* Style for home button */
+        .home-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Adjust home button position when clicked */
+        .home-button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center mb-4">
+        <button type="button" onclick="redirectToLogin()" class="home-button"><i class="fas fa-home"></i> Home</button>
+    </div>
+    <div class="container credit">
+        <input type="number" placeholder="Enter Amount" id="amt">
+        <button type="button" onclick="cred()">Credit</button>
+        <h2 id="hello"></h2>
+    </div>
+
+    <script>
+        let fixedamt = 10000;
+        function cred(){
+            let user = parseInt(document.getElementById('amt').value);
+            let totalamt = user + fixedamt;
+            let bal = totalamt;
+            document.getElementById("hello").innerHTML = "Your Total balance = " + bal;
+        }
+
+        function redirectToLogin() {
+            window.location.href = "login2.html";
+        }
+    </script>
+</body>
+</html>

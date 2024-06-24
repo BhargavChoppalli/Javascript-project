@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4481eb, rgb(75, 254, 4));
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #4481eb, #04befe);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #fff;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button[type="submit"] {
+            background-color: red;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: green;
+        }
+        .back-button {
+            position: fixed; /* Position fixed to keep it visible */
+            top: 20px;
+            left: 20px;
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            z-index: 1000; /* Ensure it appears above other content */
+        }
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <a class="back-button" href="#" onclick="history.back(); return false;">Home</a>
+    <div class="container">
+        <form>
+            <h2>User Login</h2>
+            <input type="text" placeholder="Account Number" id="Acnum" required><br>
+            <input type="password" placeholder="Enter your four-digit PIN" id="pin" required><br>
+            <button type="submit" onclick="result(event)">Login</button>
+        </form>
+    </div>
+    <script>
+        function result(event) {
+            event.preventDefault();
+
+            let Acnum = document.getElementById('Acnum').value;
+            let pin = document.getElementById('pin').value;
+
+            if (Acnum === "" || pin === "") {
+                alert("Please enter both Account Number and PIN.");
+            } else if (Acnum == 123456 && pin == 4444) {
+                alert("Login successful");
+                window.location.href = "login2.html";
+            } else {
+                alert("Please enter valid credentials.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS styles */
+        .image-frame {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+            display: inline-block; /* Display images in a row */
+            vertical-align: top; /* Align images to the top */
+        }
+        .main img {
+            height: 300px;
+            width: 300px;
+        }
+        .main img:hover {
+            background-color: aquamarine;
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+        .main h2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .row{
+            margin-left: 80px;
+
+        }
+        .back-button {
+            position: fixed; /* Position fixed to keep it visible */
+            top: 20px;
+            left: 20px;
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it appears above other content */
+        }
+         .back-button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <a class="back-button" href="#" onclick="history.back(); return false;">Back</a>
+    <div class="row">
+        <div class="image-frame">
+            <div class="main">
+                <a href="kidstop.html">
+                    <img src="images/kt8.jpg" alt="Top wear">
+                    <h2>Top Wear</h2>
+                </a>
+            </div>
+        </div>
+        <div class="image-frame">
+            <div class="main">
+              <a href="kidsbottom.html">
+                <img src="images/kb6.jpg" alt="Bottom wear">
+                <h2>Bottom Wear</h2>
+              </a>
+            </div>
+        </div>
+        <div class="image-frame">
+            <div class="main">
+              <a href="kidsfoot.html">
+                <img src="images/kf10.jpg" alt="Foot wear">
+                <h2>Foot Wear</h2>
+              </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

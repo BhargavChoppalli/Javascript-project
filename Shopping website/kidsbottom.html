@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Gallery</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Style for header */
+    header {
+        margin-left: calc((100% - 100vw) / 2);
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-buttons {
+        display: flex;
+        align-items: center;
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
+
+    .header-buttons button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    /* Style for images */
+    .product {
+        height: 350px;
+        width: 250px;
+        display: inline-block;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .product img {
+        width: 250px;
+        height: 300px;
+        border: 2px solid lightblue;
+    }
+
+    .product img:hover{
+        transform: scale(0.9);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .product .brand {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .product .price {
+        font-weight: bold;
+    }
+
+    /* Style for input fields */
+    input[type="number"] {
+        padding: 5px;
+        margin: 5px;
+    }
+
+    /* Remove default body margin */
+    body {
+        margin: 0;
+        background-color: goldenrod;
+    }
+
+    /* Adjust margin of container */
+    .container{
+        margin-left: 80px;
+    }
+    h1 {
+        margin: 0;
+        flex: 1;
+        white-space: nowrap;
+        padding-left: 150px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="header-buttons">
+        <button onclick="window.history.back()">Back</button>
+        <button onclick="window.location.href='home.html'">Home</button>
+    </div>
+    <h1>Kids Phants</h1>
+    <div class="input-group justify-content-end">
+        <div class="input-group-sm d-flex gap-2">
+            <input type="number" id="minPrice" class="form-control" placeholder="Min Price">
+            <input type="number" id="maxPrice" class="form-control" placeholder="Max Price...">
+            <button id="filterBtn" class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Product Gallery Container -->
+<div class="container">
+    <!-- Product 1 -->
+    <div class="product">
+        <img src="images/kb1.jpg" alt="Product 1">
+        <div class="brand">Mango Kids Cargo</div>
+        <div class="price" data-price="500">Rs.500</div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+        <img src="images/kb2.jpg" alt="Product 2">
+        <div class="brand">Casual Cargo</div>
+        <div class="price" data-price="400">Rs.400</div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product">
+        <img src="images/kb3.jpg" alt="Product 3">
+        <div class="brand">Smart Fit</div>
+        <div class="price" data-price="200">Rs.200</div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product">
+        <img src="images/kb4.jpg" alt="Product 4">
+        <div class="brand">MAGIC Boys</div>
+        <div class="price" data-price="250">Rs.250</div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product">
+        <img src="images/kb5.jpg" alt="Product 5">
+        <div class="brand">Yousta Boys</div>
+        <div class="price" data-price="800">Rs.800</div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product">
+        <img src="images/kb6.jpg" alt="Product 6">
+        <div class="brand">MAGIC Boys</div>
+        <div class="price" data-price="550">Rs.550</div>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="product">
+        <img src="images/kb7.jpg" alt="Product 7">
+        <div class="brand">Mango kids</div>
+        <div class="price" data-price="65">Rs.650</div>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="product">
+        <img src="images/kb8.jpg" alt="Product 8">
+        <div class="brand">Yousta Boys</div>
+        <div class="price" data-price="750">Rs.750</div>
+    </div>
+
+    <!-- Product 9 -->
+    <div class="product">
+        <img src="images/kb9.jpg" alt="Product 9">
+        <div class="brand">Smart Fit</div>
+        <div class="price" data-price="650">Rs.650</div>
+    </div>
+
+    <!-- Product 10 -->
+    <div class="product">
+        <img src="images/kb10.jpg" alt="Product 10">
+        <div class="brand">Mango kids</div>
+        <div class="price" data-price="950">Rs.950</div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    let filterBtn = document.getElementById('filterBtn');
+    filterBtn.addEventListener('click', function() {
+        let minPrice = parseInt(document.getElementById('minPrice').value) || 0;
+        let maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+        let products = document.querySelectorAll('.product');
+
+        products.forEach(function(product) {
+            let price = parseInt(product.querySelector('.price').getAttribute('data-price'));
+            if (price >= minPrice && price <= maxPrice) {
+                product.style.display = 'inline-block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
