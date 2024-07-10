@@ -1,92 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Gallery</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-<style>
-    /* Style for header */
-    header {
-        margin-left: calc((100% - 100vw) / 2);
-        background-color: #333;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Gallery</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style for header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .header-buttons {
-        display: flex;
-        align-items: center;
-        padding-bottom: 30px;
-        padding-top: 30px;
-    }
+        .header-buttons {
+            display: flex;
+            align-items: center;
+        }
 
-    .header-buttons button {
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        margin-right: 10px;
-    }
+        .header-buttons button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
 
-    /* Style for images */
-    .product {
-        height: 350px;
-        width: 250px;
-        display: inline-block;
-        margin: 10px;
-        text-align: center;
-    }
+        /* Style for images */
+        .product {
+            height: 350px;
+            width: 250px;
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
 
-    .product img {
-        width: 250px;
-        height: 300px;
-        border: 2px solid lightblue;
-    }
+        .product img {
+            width: 250px;
+            height: 300px;
+            border: 2px solid lightblue;
+        }
 
-    .product img:hover{
-        transform: scale(0.9);
-        transition: transform 0.3s ease-in-out;
-    }
+        .product img:hover {
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
 
-    .product .brand {
-        font-weight: bold;
-        margin-top: 5px;
-    }
+        .product .brand {
+            font-weight: bold;
+            margin-top: 5px;
+        }
 
-    .product .price {
-        font-weight: bold;
-    }
+        .product .price {
+            font-weight: bold;
+        }
 
-    /* Style for input fields */
-    input[type="number"] {
-        padding: 5px;
-        margin: 5px;
-    }
+        /* Style for input fields */
+        input[type="number"] {
+            padding: 8px 12px; /* Adjusted padding */
+            margin: 5px;
+            height: auto; /* Allow height to be determined by content */
+        }
 
-    /* Remove default body margin */
-    body {
-        margin: 0;
-        background-color: goldenrod;
-    }
+        /* Remove default body margin */
+        body {
+            margin: 0;
+            background-color: goldenrod;
+        }
 
-    /* Adjust margin of container */
-    .container{
-        margin-left: 80px;
-    }
-    h1 {
-        margin: 0;
-        flex: 1;
-        white-space: nowrap;
-        padding-left: 150px;
-    }
-</style>
+        /* Adjust margin of container */
+        .container {
+            margin-left: 80px;
+        }
+
+        h1 {
+            margin: 0;
+            flex: 1;
+            white-space: nowrap;
+            padding-left: 150px;
+        }
+
+        /* Adjust height and style of filter button */
+        #filterBtn {
+            height: auto; /* Adjusted to auto for dynamic height */
+            padding: 8px 14px; /* Match padding with input fields */
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
 
@@ -105,8 +110,6 @@
         </div>
     </div>
 </header>
-
-
 
 <!-- Product Gallery Container -->
 <div class="container">
